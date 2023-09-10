@@ -79,11 +79,10 @@ import ${provider.presenterPackageName.value}.${provider.pageName.value}Presente
 import ${provider.appPackageName.value}.R;
 import android.content.Intent;
 ${commonAnnotation(provider)}
-public class ${provider.pageName.value}Fragment extends BaseFragment<${provider.pageName.value}Presenter> implements ${provider.pageName.value}Contract.View{
+public class ${provider.pageName.value}Fragment extends BaseFragment<${provider.pageName.value}Presenter, Fragment${provider.pageName.value}Binding> implements ${provider.pageName.value}Contract.View{
      //用于接受数据
      private static String TYPE = "TYPE";
-     private String getText;
-//     @BindView(R.id. )
+     private String getText; 
 //     View  ;
     public static ${provider.pageName.value}Fragment newInstance(String type) {
         ${provider.pageName.value}Fragment fragment = new ${provider.pageName.value}Fragment();
@@ -104,9 +103,11 @@ public class ${provider.pageName.value}Fragment extends BaseFragment<${provider.
     }
     
     @Override
-    public View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-        return inflater.inflate(R.layout.${provider.fragmentLayoutName.value}, container, false);
+    public void initView() {
+//            preview_view = getBinding().previewView;
+//            onForClickListener(this,getBinding());    
     }
+    
     /**
      * 在 onActivityCreate()时调用
      */
@@ -163,6 +164,12 @@ public class ${provider.pageName.value}Fragment extends BaseFragment<${provider.
     public Fragment getFragment(){
         return this;
     }
+    
+    @Override
+    protected Fragment${provider.pageName.value}Binding createBinding(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
+        return Fragment${provider.pageName.value}Binding.inflate(inflater, container, false);
+    }
+    
     
     @Override
     public void showLoading() {

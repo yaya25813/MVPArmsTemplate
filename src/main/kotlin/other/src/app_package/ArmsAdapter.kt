@@ -51,22 +51,22 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
 fun armsAdapterJava(provider: ArmsPluginTemplateProviderImpl) = """
 package ${provider.adapterPackageName.value};
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.viewholder.QuickViewHolder;
 import android.content.Context;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import ${provider.appPackageName.value}.R;
 import  ${provider.entityPackageName.value}.${provider.pageName.value}Entity;
-public class ${provider.pageName.value}Adapter extends BaseQuickAdapter <${provider.pageName.value}Entity, BaseViewHolder> {
-    private Context getContext;
+public class ${provider.pageName.value}Adapter extends BaseQuickAdapter <${provider.pageName.value}Entity, QuickViewHolder> {
 
-    public ${provider.pageName.value}Adapter(Context context) {
-        super(R.layout.${provider.adapterLayoutName.value});
-        getContext = context;
-    }
-
+   @NonNull
     @Override
-    protected void convert(BaseViewHolder helper,${provider.pageName.value}Entity item) {
-        
-        
+    protected QuickViewHolder onCreateViewHolder(@NonNull Context context, @NonNull ViewGroup viewGroup, int i) {
+        return new QuickViewHolder(R.layout.${provider.adapterLayoutName.value}, viewGroup);
+    }
+    
+   @Override
+    protected void onBindViewHolder(@NonNull QuickViewHolder helper, int i, @Nullable ${provider.pageName.value}Entity item) {
 //   new GlideImageLoaderStrategy().loadImage(getContext,
 //                    ImageConfigImpl.builder()
 //                            .errorPic(R.drawable.icon_parking_mobile_img)  //异常照片
