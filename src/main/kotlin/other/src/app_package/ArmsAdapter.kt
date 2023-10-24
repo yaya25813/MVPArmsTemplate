@@ -53,6 +53,7 @@ package ${provider.adapterPackageName.value};
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.QuickViewHolder;
 import android.content.Context;
+import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import ${provider.appPackageName.value}.R;
@@ -70,8 +71,8 @@ public class ${provider.pageName.value}Adapter extends BaseQuickAdapter <${provi
 //   new GlideImageLoaderStrategy().loadImage(getContext,
 //                    ImageConfigImpl.builder()
 //                            .errorPic(R.drawable.icon_parking_mobile_img)  //异常照片
-//                            .imageRadius(8)  //图片圆角
-//                            .url(item.getImage()) // 图片河南省郑州市金水区西史赵 
+//                            .imageRadius(8)  //图片圆角 isCircle(true) 圆图
+//                            .url(item.getImage()) // 图片地址
 //                            .imageView(helper.getView(R.id.iv_parking_mobile_item_img)).build());
     }
 }   

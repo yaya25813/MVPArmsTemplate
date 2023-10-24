@@ -4,6 +4,7 @@ import com.android.tools.idea.wizard.template.Language
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import other.res.layout.simpleLayout
+import other.res.layout.simpleAdapterLayout
 import other.src.app_package.*
 import other.src.armsManifest
 import java.io.File
@@ -22,7 +23,7 @@ fun RecipeExecutor.armsRecipe(provider: ArmsPluginTemplateProviderImpl, data: Mo
     }
 
     if (provider.needAdapter.value && provider.generateAdapterLayout.value) {
-        save(simpleLayout(provider), File(data.resDir, "layout/${provider.adapterLayoutName.value}.xml"))
+        save(simpleAdapterLayout(provider), File(data.resDir, "layout/${provider.adapterLayoutName.value}.xml"))
     }
 
     val languageSuffix = if (data.projectTemplateData.language == Language.Java) "java" else "kt"
