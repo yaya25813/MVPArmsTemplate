@@ -19,7 +19,7 @@ fun RecipeExecutor.armsRecipe(provider: ArmsPluginTemplateProviderImpl, data: Mo
     }
 
     if (provider.needFragment.value && provider.generateFragmentLayout.value) {
-        save(simpleLayout(provider), File(data.resDir, "layout/${provider.fragmentLayoutName.value}.xml"))
+        save(simpleAdapterLayout(provider), File(data.resDir, "layout/${provider.fragmentLayoutName.value}.xml"))
     }
 
     if (provider.needAdapter.value && provider.generateAdapterLayout.value) {

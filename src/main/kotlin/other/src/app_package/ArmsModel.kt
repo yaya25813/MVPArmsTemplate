@@ -66,6 +66,7 @@ ${
 import javax.inject.Inject;
 import ${provider.contractPackageName.value}.${provider.pageName.value}Contract;
 
+import io.reactivex.Observable;
 $armsAnnotation
 ${
     if (provider.needActivity.value && provider.needFragment.value)
@@ -86,7 +87,13 @@ public class ${provider.pageName.value}Model extends BaseModel implements ${prov
     public ${provider.pageName.value}Model(IRepositoryManager repositoryManager) {
         super(repositoryManager);
     }
-
+    
+//    @Override
+//    public Observable<BaseResponse<PaginationEntity<List<SecretCoinEntity>>>> accountDetail(Map<String, Object> bean) {
+//        return mRepositoryManager.obtainRetrofitService(DeviceService.class)
+//                .accountDetail(bean);
+//    }
+    
     @Override
     public void onDestroy() {
         super.onDestroy();

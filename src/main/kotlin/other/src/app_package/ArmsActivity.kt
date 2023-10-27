@@ -63,8 +63,14 @@ import ${provider.presenterPackageName.value}.${provider.pageName.value}Presente
 import ${provider.appPackageName.value}.R;
 
 ${commonAnnotation(provider)}
+
+@RouterAnno(
+        host = ModuleConfig.BaseHOST,
+        path = ModuleConfig.App.,
+        desc = ""
+)
 public class ${provider.pageName.value}Activity extends BaseActivity<${provider.pageName.value}Presenter, Activity${provider.pageName.value}Binding> implements ${provider.pageName.value}Contract.View, View.OnClickListener{
-//     View  ;
+ 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
         Dagger${provider.pageName.value}Component //如找不到该类,请编译一下项目
@@ -77,13 +83,13 @@ public class ${provider.pageName.value}Activity extends BaseActivity<${provider.
     
     @Override
     public void initView(){
-//            preview_view = getBinding().previewView;
+        //setTopTitle("");
+ 
 //            onForClickListener(this,getBinding());
     }
     
     @Override
     public void initData() {
-        //setTopTitle("");
         
         initListener();
     }
@@ -129,17 +135,7 @@ public class ${provider.pageName.value}Activity extends BaseActivity<${provider.
         checkNotNull(message);
         ArmsUtils.snackbarText(message);
     }
-
-    @Override
-    public void launchActivity(@NonNull Class<?> cls, Bundle bundle) {
-        Intent intent = new Intent();
-        intent.setClass(this, cls);
-        if (bundle != null) {
-            intent.putExtras(bundle);
-        }
-        checkNotNull(intent);
-        ArmsUtils.startActivity(intent);
-    }
+ 
 
     @Override
     public void killMyself() {

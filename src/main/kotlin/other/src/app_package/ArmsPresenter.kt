@@ -3,7 +3,8 @@ package other.src.app_package
 import other.ArmsPluginTemplateProviderImpl
 import other.armsAnnotation
 
-fun armsPresenter(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl): String = if (isKt) armsPresenterKt(provider) else armsPresenterJava(provider)
+fun armsPresenter(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl): String =
+    if (isKt) armsPresenterKt(provider) else armsPresenterJava(provider)
 
 private fun armsPresenterKt(provider: ArmsPluginTemplateProviderImpl) = """
 package ${provider.presenterPackageName.value}
@@ -97,6 +98,27 @@ public class ${provider.pageName.value}Presenter extends BasePresenter<${provide
         super(model, rootView);
     }
     
+//    public void accountDetail(Map<String, Object> map) {
+//        mModel.accountDetail(map)
+//                .compose(RxUtils.applySchedulers(mRootView))
+//                .subscribe(new ErrorHandleSubscriber<BaseResponse<PaginationEntity<List<SecretCoinEntity>>>>(mErrorHandler) {
+//                    @Override
+//                    public void onNext(BaseResponse<PaginationEntity<List<SecretCoinEntity>>> userBeanBaseResponse) {
+//                        if (userBeanBaseResponse.getSuccess()) {
+//                            if (DataTool.isNotEmpty(userBeanBaseResponse.getData())) {
+//                                mRootView.accountDetail(userBeanBaseResponse.getData().getTotal(), userBeanBaseResponse.getData().getRows());
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable t) {
+//                        super.onError(t);
+//                        Timber.e("发生意外 ： " + t.toString());
+//                    }
+//                });
+//    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

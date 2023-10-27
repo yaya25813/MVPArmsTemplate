@@ -197,17 +197,6 @@ public class ${provider.pageName.value}Fragment extends BaseFragment<${provider.
         checkNotNull(message);
         ArmsUtils.snackbarText(message);
     }
-
-    @Override
-    public void launchActivity(@NonNull Class<?> cls, Bundle bundle) {
-        Intent intent = new Intent();
-        intent.setClass(getContext(), cls);
-        if (bundle != null) {
-            intent.putExtras(bundle);
-        }
-        checkNotNull(intent);
-        ArmsUtils.startActivity(intent);
-    }
 }
     
 """
