@@ -33,7 +33,7 @@ class ${provider.pageName.value}Fragment : BaseFragment<${provider.pageName.valu
         Dagger${provider.pageName.value}Component //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
-                .${provider.pageName.value[0].toLowerCase()}${provider.pageName.value.substring(1,provider.pageName.value.length)}Module(${provider.pageName.value}Module(this))
+                .${provider.pageName.value[0].lowercaseChar()}${provider.pageName.value.substring(1,provider.pageName.value.length)}Module(${provider.pageName.value}Module(this))
                 .build()
                 .inject(this)
     }
@@ -71,7 +71,6 @@ import android.view.ViewGroup;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-import static com.jess.arms.utils.Preconditions.checkNotNull;
 import ${provider.appPackageName.value}.view.dialog.LoadingDialog;
 import ${provider.componentPackageName.value}.Dagger${provider.pageName.value}Component;
 import ${provider.contractPackageName.value}.${provider.pageName.value}Contract;
@@ -194,7 +193,6 @@ public class ${provider.pageName.value}Fragment extends BaseFragment<${provider.
 
     @Override
     public void showMessage(@NonNull String message) {
-        checkNotNull(message);
         ArmsUtils.snackbarText(message);
     }
 }

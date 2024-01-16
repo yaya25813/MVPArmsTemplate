@@ -24,7 +24,7 @@ class ${provider.pageName.value}Activity : SimpleBaseActivity<${provider.pageNam
         Dagger${provider.pageName.value}Component //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
-                .${provider.pageName.value[0].toLowerCase()}${provider.pageName.value.substring(1, provider.pageName.value.length)}Module(${provider.pageName.value}Module(this))
+                .${provider.pageName.value[0].lowercaseChar()}${provider.pageName.value.substring(1, provider.pageName.value.length)}Module(${provider.pageName.value}Module(this))
                 .build()
                 .inject(this)
     }
@@ -53,7 +53,6 @@ import com.jess.arms.base.BaseActivity;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.utils.ArmsUtils;
 import android.content.Intent;
-import static com.jess.arms.utils.Preconditions.checkNotNull;
 import ${provider.appPackageName.value}.view.dialog.LoadingDialog;
 import ${provider.appPackageName.value}.databinding.Activity${provider.pageName.value}Binding;
 import ${provider.componentPackageName.value}.Dagger${provider.pageName.value}Component;
@@ -66,7 +65,7 @@ ${commonAnnotation(provider)}
 
 @RouterAnno(
         host = ModuleConfig.BaseHOST,
-        path = ModuleConfig.App.,
+        path = ModuleConfig.App.${provider.pageName.value},
         desc = ""
 )
 public class ${provider.pageName.value}Activity extends BaseActivity<${provider.pageName.value}Presenter, Activity${provider.pageName.value}Binding> implements ${provider.pageName.value}Contract.View, View.OnClickListener{
@@ -132,7 +131,6 @@ public class ${provider.pageName.value}Activity extends BaseActivity<${provider.
     
     @Override
     public void showMessage(@NonNull String message) {
-        checkNotNull(message);
         ArmsUtils.snackbarText(message);
     }
  
