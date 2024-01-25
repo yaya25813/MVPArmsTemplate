@@ -8,18 +8,27 @@ fun armsActivity(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) = if (
 private fun armsActivityKt(provider: ArmsPluginTemplateProviderImpl) = """
 package ${provider.activityPackageName.value}
 import android.app.Activity
-import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import com.blankj.utilcode.util.ActivityUtils
+import com.jess.arms.base.BaseActivity
 import com.jess.arms.di.component.AppComponent
-import cn.skytech.iglobalwin.app.base.SimpleBaseActivity
+import com.jess.arms.utils.ArmsUtils
 import ${provider.componentPackageName.value}.Dagger${provider.pageName.value}Component
 import ${provider.moudlePackageName.value}.${provider.pageName.value}Module
 import ${provider.contractPackageName.value}.${provider.pageName.value}Contract
 import ${provider.presenterPackageName.value}.${provider.pageName.value}Presenter
-import ${provider.appPackageName.value}.R
-import kotlinx.android.synthetic.main.base_title.*
+import com.mstytech.yzapp.databinding.Activity${provider.pageName.value}Binding
+import com.mstytech.yzapp.view.dialog.LoadingDialog
 
 ${commonAnnotation(provider)}
-class ${provider.pageName.value}Activity : SimpleBaseActivity<${provider.pageName.value}Presenter>() , ${provider.pageName.value}Contract.View {
+@RouterAnno(
+    host = ModuleConfig.BaseHOST,
+    path = ModuleConfig.App.${provider.pageName.value}
+    interceptorNames = [ModuleConfig.USER_LOGIN],
+    desc = ""
+)
+class ${provider.pageName.value}Activity : BaseActivity<${provider.pageName.value}Presenter, Activity${provider.pageName.value}Binding>() , ${provider.pageName.value}Contract.View, View.OnClickListener {
     override fun setupActivityComponent(appComponent: AppComponent) {
         Dagger${provider.pageName.value}Component //如找不到该类,请编译一下项目
                 .builder()
@@ -29,15 +38,50 @@ class ${provider.pageName.value}Activity : SimpleBaseActivity<${provider.pageNam
                 .inject(this)
     }
     
-    override fun initData(savedInstanceState: Bundle?) {
+    override fun initView() {
 //         setTopTitle("");
+        
+    }
+    
+    override fun initData() {
+ 
         initListener()
     }
+    
     private fun initListener() {
     
     }
     
+    override fun onClick(view: View) {}
+    
     override fun getActivity(): Activity = this
+    
+    override fun showLoading() {
+        if (ActivityUtils.isActivityAlive(this)) {
+            LoadingDialog.getInstance(this).show()
+        }
+    }
+
+    override fun hideLoading() {
+        LoadingDialog.dialogDismiss()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        hideLoading()
+    }
+    
+    override fun createBinding(): Activity${provider.pageName.value}Binding {
+        return Activity${provider.pageName.value}Binding.inflate(LayoutInflater.from(this))
+    }
+    
+    override fun showMessage(message: String) {
+        ArmsUtils.snackbarText(message)
+    }
+
+    override fun killMyself() {
+        finish()
+    }
 }
     
 """

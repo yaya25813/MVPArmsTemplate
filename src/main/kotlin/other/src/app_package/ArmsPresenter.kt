@@ -50,6 +50,25 @@ BasePresenter<${provider.pageName.value}Contract.Model, ${provider.pageName.valu
     override fun onDestroy() {
           super.onDestroy()
     }
+    
+//    fun listParkingNames(objectMap: Map<String?, Any?>?) {
+//        mModel!!.listParkingNames(objectMap)
+//            ?.compose(RxUtils.applySchedulers(mRootView))
+//            ?.subscribe(object :
+//                ErrorHandleSubscriber<BaseResponse<PaginationEntity<List<ParkingPayEntity?>?>?>?>(mErrorHandler) {
+//                override fun onNext(userBeanBaseResponse: BaseResponse<PaginationEntity<List<ParkingPayEntity?>?>?>) {
+//                    if (userBeanBaseResponse.success) {
+//                        mRootView!!.listParkingNamesResponse(userBeanBaseResponse.data)
+//                    } else {
+//                        mRootView!!.showMessage(userBeanBaseResponse.msg)
+//                    }
+//                }
+//
+//                override fun onError(t: Throwable) {
+//                    super.onError(t)
+//                }
+//            })
+//    }
 }   
 """
 
@@ -71,6 +90,7 @@ import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.http.imageloader.ImageLoader;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 import javax.inject.Inject;
+import java.util.Map;
 import ${provider.contractPackageName.value}.${provider.pageName.value}Contract;
 
 $armsAnnotation

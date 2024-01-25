@@ -11,6 +11,8 @@ import android.app.Application
 import com.google.gson.Gson
 import com.jess.arms.integration.IRepositoryManager
 import com.jess.arms.mvp.BaseModel
+import ${provider.modelPackageName.value}.entity.BaseResponse
+import io.reactivex.Observable
 ${
     if (provider.needActivity.value && provider.needFragment.value)
         "import com.jess.arms.di.scope.ActivityScope"
@@ -44,6 +46,11 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     override fun onDestroy() {
           super.onDestroy()
     }
+    
+//    override fun listParkingNames(bean: Map<String?, Any?>?): Observable<BaseResponse<List<PaginationEntity<ParkingPayEntity?>?>?>?>? {
+//        return mRepositoryManager.obtainRetrofitService(DeviceService::class.java)
+//            .listParkingNames(bean)
+//    }
 }   
 """
 
@@ -65,7 +72,7 @@ ${
 }
 import javax.inject.Inject;
 import ${provider.contractPackageName.value}.${provider.pageName.value}Contract;
-
+import java.util.Map;
 import io.reactivex.Observable;
 $armsAnnotation
 ${

@@ -18,16 +18,23 @@ import ${provider.componentPackageName.value}.Dagger${provider.pageName.value}Co
 import ${provider.moudlePackageName.value}.${provider.pageName.value}Module
 import ${provider.contractPackageName.value}.${provider.pageName.value}Contract
 import ${provider.presenterPackageName.value}.${provider.pageName.value}Presenter
-import ${provider.appPackageName.value}.R
-import kotlinx.android.synthetic.main.base_title.*
+
+import com.mstytech.yzapp.view.dialog.LoadingDialog
 
 ${commonAnnotation(provider)}
-class ${provider.pageName.value}Fragment : BaseFragment<${provider.pageName.value}Presenter>() , ${provider.pageName.value}Contract.View{
+class ${provider.pageName.value}Fragment : BaseFragment<${provider.pageName.value}Presenter, Fragment${provider.pageName.value}Binding>() , ${provider.pageName.value}Contract.View{
+    private var getText: String? = null
+
     companion object {
-    fun newInstance():${provider.pageName.value}Fragment {
-        val fragment = ${provider.pageName.value}Fragment()
-        return fragment
-    }
+        //用于接受数据
+        private const val TYPE = "TYPE"
+        fun newInstance(type: String?): ${provider.pageName.value}Fragment {
+            val fragment = ${provider.pageName.value}Fragment()
+            val bundle = Bundle()
+            bundle.putString(TYPE, type)
+            fragment.arguments = bundle
+            return fragment
+        }
     }
     override fun setupFragmentComponent(appComponent:AppComponent) {
         Dagger${provider.pageName.value}Component //如找不到该类,请编译一下项目
@@ -37,23 +44,56 @@ class ${provider.pageName.value}Fragment : BaseFragment<${provider.pageName.valu
                 .build()
                 .inject(this)
     }
-    override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?):View{
-        return inflater.inflate(R.layout.${provider.fragmentLayoutName.value}, container, false)
-    }
+    
+   override fun initView() {
+   
+   }
+    
     /**
      * 在 onActivityCreate()时调用
      */
     override fun initData(savedInstanceState: Bundle?) {
-        setToolBarNoBack(toolbar, "${provider.pageName.value}")
         
         initListener()
     }
+    override fun setData(data: Any?) {}
     
     private fun initListener() {
     
     }
     
-    override fun getFragment(): Fragment = this
+    val fragment: Fragment
+        get() = this
+    
+    override fun createBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): Fragment${provider.pageName.value}Binding {
+        return Fragment${provider.pageName.value}Binding.inflate(inflater, container, false)
+    }
+    
+    override fun showLoading() {
+        LoadingDialog.getInstance(context).show()
+    }
+
+    override fun hideLoading() {
+        LoadingDialog.dialogDismiss()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        hideLoading()
+    }
+
+    override fun getBundle(bundle: Bundle) {
+        assert(arguments != null)
+        getText = requireArguments().getString(TYPE)
+    }
+
+    override fun showMessage(message: String) {
+        ArmsUtils.snackbarText(message)
+    }
+
 }
     
 """

@@ -20,6 +20,8 @@ ${
 }
 import com.jess.arms.mvp.IView
 import com.jess.arms.mvp.IModel
+import ${provider.modelPackageName.value}.entity.BaseResponse
+import io.reactivex.Observable
 
 $armsAnnotation
 interface ${provider.pageName.value}Contract {
@@ -29,12 +31,13 @@ ${
     when {
         provider.needActivity.value -> {
             """
-    fun getActivity(): Activity
+        override fun getActivity(): Activity
+
     """
         }
         provider.needFragment.value -> {
             """
-    fun getFragment(): Fragment
+         override fun getFragment(): Fragment
     """
         }
         else -> ""
@@ -42,7 +45,9 @@ ${
 }
     }
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
-    interface Model : IModel
+    interface Model : IModel{
+//        fun listParkingNames(bean: Map<String?, Any?>?): Observable<BaseResponse<ParkingPayEntity<List<ParkingPayEntity?>?>?>?>?
+    }
 }    
 """
 
@@ -61,6 +66,7 @@ ${
 }
 import com.jess.arms.mvp.IView;
 import com.jess.arms.mvp.IModel;
+import java.util.Map;
 import io.reactivex.Observable;
 $armsAnnotation
 public interface ${provider.pageName.value}Contract {
