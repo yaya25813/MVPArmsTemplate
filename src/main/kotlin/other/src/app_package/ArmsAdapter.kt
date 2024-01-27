@@ -28,7 +28,7 @@ class ${provider.pageName.value}Adapter() :
 //       GlideImageLoaderStrategy().loadImage(
 //            context,
 //            ImageConfigImpl.builder()
-//                .errorPic(R.mipmap.ic_launcher_round) //异常照片
+//                .placeholder(R.mipmap.ic_launcher_round) //占位照片 头像icon_user_avatar  占位icon_app_null
 //                .fallback(R.mipmap.ic_launcher_round) //异常照片
 //                .url(item.getIcon()) // 图片地址
 //                .imageView(helper.getView<ImageView>(R.id.iv_message_avatar)).build()
@@ -59,7 +59,7 @@ public class ${provider.pageName.value}Adapter extends BaseQuickAdapter <${provi
     protected void onBindViewHolder(@NonNull QuickViewHolder helper, int i, @Nullable ${provider.pageName.value}Entity item) {
 //   new GlideImageLoaderStrategy().loadImage(getContext(),
 //                    ImageConfigImpl.builder()
-//                            .errorPic(R.mipmap.icon_parking_mobile_img)  //异常照片
+//                            .placeholder(R.mipmap.ic_launcher_round) //占位照片 头像icon_user_avatar  占位icon_app_null
 //                            .imageRadius(8)  //图片圆角 isCircle(true) 圆图
 //                            .url(item.getImage()) // 图片地址
 //                            .imageView(helper.getView(R.id.iv_parking_mobile_item_img)).build());

@@ -22,12 +22,14 @@ import com.mstytech.yzapp.databinding.Activity${provider.pageName.value}Binding
 import com.mstytech.yzapp.view.dialog.LoadingDialog
 
 ${commonAnnotation(provider)}
+
 @RouterAnno(
     host = ModuleConfig.BaseHOST,
-    path = ModuleConfig.App.${provider.pageName.value}
+    path = ModuleConfig.App.${provider.pageName.value},
     interceptorNames = [ModuleConfig.USER_LOGIN],
     desc = ""
 )
+
 class ${provider.pageName.value}Activity : BaseActivity<${provider.pageName.value}Presenter, Activity${provider.pageName.value}Binding>() , ${provider.pageName.value}Contract.View, View.OnClickListener {
     override fun setupActivityComponent(appComponent: AppComponent) {
         Dagger${provider.pageName.value}Component //如找不到该类,请编译一下项目
