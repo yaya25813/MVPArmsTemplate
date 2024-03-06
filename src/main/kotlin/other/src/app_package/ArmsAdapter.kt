@@ -10,12 +10,12 @@ private fun armsAdapterKt(provider: ArmsPluginTemplateProviderImpl) = """
 package ${provider.adapterPackageName.value}
 import android.content.Context
 import android.view.ViewGroup  
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.QuickViewHolder
+import com.chad.library.adapter4.BaseQuickAdapter
+import com.chad.library.adapter4.viewholder.QuickViewHolder
 import ${provider.appPackageName.value}.R 
 import  ${provider.entityPackageName.value}.${provider.pageName.value}Entity;
 class ${provider.pageName.value}Adapter() :
-    BaseQuickAdapter<${provider.pageName.value}Entity?, QuickViewHolder>() {
+    BaseQuickAdapter<${provider.pageName.value}Entity, QuickViewHolder>() {
     override fun onCreateViewHolder(
         context: Context,
         viewGroup: ViewGroup,
@@ -39,8 +39,8 @@ class ${provider.pageName.value}Adapter() :
 
 fun armsAdapterJava(provider: ArmsPluginTemplateProviderImpl) = """
 package ${provider.adapterPackageName.value};
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.viewholder.QuickViewHolder;
+import com.chad.library.adapter4.BaseQuickAdapter
+import com.chad.library.adapter4.viewholder.QuickViewHolder
 import android.content.Context;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
