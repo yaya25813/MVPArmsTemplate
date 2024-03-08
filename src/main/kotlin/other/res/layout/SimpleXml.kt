@@ -1,8 +1,6 @@
 package other.res.layout
 
-import other.ArmsPluginTemplateProviderImpl
-
-fun simpleLayout(provider: ArmsPluginTemplateProviderImpl) = """
+fun simpleLayout() = """
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

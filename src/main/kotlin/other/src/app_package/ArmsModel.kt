@@ -47,7 +47,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
           super.onDestroy()
     }
     
-//    override fun listParkingNames(bean: Map<String?, Any?>?): Observable<BaseResponse<List<PaginationEntity<ParkingPayEntity?>?>?>?>? {
+//    override fun listParkingNames(bean: Map<String, Any?>?): Observable<BaseResponse<PaginationEntity<List<SquareTopicMainEntity>>>> {
 //        return mRepositoryManager.obtainRetrofitService(DeviceService::class.java)
 //            .listParkingNames(bean)
 //    }

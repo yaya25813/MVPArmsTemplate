@@ -51,21 +51,17 @@ BasePresenter<${provider.pageName.value}Contract.Model, ${provider.pageName.valu
           super.onDestroy()
     }
     
-//    fun listParkingNames(objectMap: Map<String?, Any?>?) {
-//        mModel!!.listParkingNames(objectMap)
-//            ?.compose(RxUtils.applySchedulers(mRootView))
+//    fun squareTopicHotList(objectMap: HashMap<String, Any?>?) {
+//        mModel!!.squareTopicHotList(objectMap)
+//            .compose(RxUtils.applySchedulers(mRootView))
 //            ?.subscribe(object :
-//                ErrorHandleSubscriber<BaseResponse<PaginationEntity<List<ParkingPayEntity?>?>?>?>(mErrorHandler) {
-//                override fun onNext(userBeanBaseResponse: BaseResponse<PaginationEntity<List<ParkingPayEntity?>?>?>) {
-//                    if (userBeanBaseResponse.success) {
-//                        mRootView!!.listParkingNamesResponse(userBeanBaseResponse.data)
-//                    } else {
-//                        mRootView!!.showMessage(userBeanBaseResponse.msg)
+//                ErrorHandleSubscriber<BaseResponse<PaginationEntity<List<SquareTopicMainEntity>>>>(
+//                    mErrorHandler
+//                ) {
+//                override fun onNext(userBeanBaseResponse: BaseResponse<PaginationEntity<List<SquareTopicMainEntity>>>) {
+//                    if (userBeanBaseResponse.isSuccess) {
+//                        mRootView.squareTopicHotList(userBeanBaseResponse.data)
 //                    }
-//                }
-//
-//                override fun onError(t: Throwable) {
-//                    super.onError(t)
 //                }
 //            })
 //    }

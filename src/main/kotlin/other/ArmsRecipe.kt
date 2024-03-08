@@ -15,15 +15,15 @@ fun RecipeExecutor.armsRecipe(provider: ArmsPluginTemplateProviderImpl, data: Mo
     }
 
     if (provider.needActivity.value && provider.generateActivityLayout.value) {
-        save(simpleLayout(provider), File(data.resDir, "layout/${provider.activityLayoutName.value}.xml"))
+        save(simpleLayout(), File(data.resDir, "layout/${provider.activityLayoutName.value}.xml"))
     }
 
     if (provider.needFragment.value && provider.generateFragmentLayout.value) {
-        save(simpleLayout(provider), File(data.resDir, "layout/${provider.fragmentLayoutName.value}.xml"))
+        save(simpleLayout(), File(data.resDir, "layout/${provider.fragmentLayoutName.value}.xml"))
     }
 
     if (provider.needAdapter.value && provider.generateAdapterLayout.value) {
-        save(simpleAdapterLayout(provider), File(data.resDir, "layout/${provider.adapterLayoutName.value}.xml"))
+        save(simpleAdapterLayout(), File(data.resDir, "layout/${provider.adapterLayoutName.value}.xml"))
     }
 
     val languageSuffix = if (data.projectTemplateData.language == Language.Java) "java" else "kt"
