@@ -18,20 +18,20 @@ class ${provider.pageName.value}Adapter() :
     BaseQuickAdapter<${provider.pageName.value}Entity, QuickViewHolder>() {
     override fun onCreateViewHolder(
         context: Context,
-        viewGroup: ViewGroup,
-        i: Int
+        parent: ViewGroup,
+        viewType: Int
     ): QuickViewHolder {
-        return QuickViewHolder(R.layout.${provider.adapterLayoutName.value}, viewGroup)
+        return QuickViewHolder(R.layout.${provider.adapterLayoutName.value}, parent)
     }
 
-    override fun onBindViewHolder(helper: QuickViewHolder, i1: Int, item: ${provider.pageName.value}Entity?) {
+    override fun onBindViewHolder(holder: QuickViewHolder, position: Int, item: ${provider.pageName.value}Entity?) {
 //       GlideImageLoaderStrategy().loadImage(
 //            context,
 //            ImageConfigImpl.builder()
 //                .placeholder(R.mipmap.ic_launcher_round) //占位照片 头像icon_user_avatar  占位icon_app_null
 //                .fallback(R.mipmap.ic_launcher_round) //异常照片
 //                .url(item.getIcon()) // 图片地址
-//                .imageView(helper.getView<ImageView>(R.id.iv_message_avatar)).build()
+//                .imageView(holder.getView<ImageView>(R.id.iv_message_avatar)).build()
     }
 }
 
@@ -51,18 +51,18 @@ public class ${provider.pageName.value}Adapter extends BaseQuickAdapter <${provi
 
    @NonNull
     @Override
-    protected QuickViewHolder onCreateViewHolder(@NonNull Context context, @NonNull ViewGroup viewGroup, int i) {
-        return new QuickViewHolder(R.layout.${provider.adapterLayoutName.value}, viewGroup);
+    protected QuickViewHolder onCreateViewHolder(@NonNull Context context, @NonNull ViewGroup parent, int position) {
+        return new QuickViewHolder(R.layout.${provider.adapterLayoutName.value}, parent);
     }
     
    @Override
-    protected void onBindViewHolder(@NonNull QuickViewHolder helper, int i, @Nullable ${provider.pageName.value}Entity item) {
+    protected void onBindViewHolder(@NonNull QuickViewHolder holder, int position, @Nullable ${provider.pageName.value}Entity item) {
 //   new GlideImageLoaderStrategy().loadImage(getContext(),
 //                    ImageConfigImpl.builder()
 //                            .placeholder(R.mipmap.ic_launcher_round) //占位照片 头像icon_user_avatar  占位icon_app_null
 //                            .imageRadius(8)  //图片圆角 isCircle(true) 圆图
 //                            .url(item.getImage()) // 图片地址
-//                            .imageView(helper.getView(R.id.iv_parking_mobile_item_img)).build());
+//                            .imageView(holder.getView(R.id.iv_parking_mobile_item_img)).build());
     }
 }   
 """

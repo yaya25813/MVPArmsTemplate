@@ -41,7 +41,7 @@ class ${provider.pageName.value}Activity : BaseActivity<${provider.pageName.valu
     }
     
     override fun initView() {
-//         setTopTitle("");
+//         setTopTitle("")
         
     }
     
