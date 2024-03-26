@@ -25,13 +25,15 @@ class ${provider.pageName.value}Adapter() :
     }
 
     override fun onBindViewHolder(holder: QuickViewHolder, position: Int, item: ${provider.pageName.value}Entity?) {
-//       GlideImageLoaderStrategy().loadImage(
-//            context,
-//            ImageConfigImpl.builder()
-//                .placeholder(R.mipmap.ic_launcher_round) //占位照片 头像icon_user_avatar  占位icon_app_null
-//                .fallback(R.mipmap.ic_launcher_round) //异常照片
-//                .url(item.getIcon()) // 图片地址
-//                .imageView(holder.getView<ImageView>(R.id.iv_message_avatar)).build()
+//        ArmsUtils.obtainAppComponentFromContext(context)
+//                        .imageLoader()
+//                        .loadImage(context, ImageConfigImpl
+//                                .builder()
+//                                .placeholder(R.mipmap.ic_launcher_round) //占位照片 头像icon_user_avatar  占位icon_app_null
+//                                .fallback(R.mipmap.ic_launcher_round) //异常照片
+//                                .imageRadius(8)  //图片圆角 isCircle(true) 圆图
+//                                .url(Api.DEBUG_IMG) // 图片地址
+//                                .imageView(helper.getView(R.id.iv_shop_wy_recommend)).build())
     }
 }
 
@@ -57,12 +59,15 @@ public class ${provider.pageName.value}Adapter extends BaseQuickAdapter <${provi
     
    @Override
     protected void onBindViewHolder(@NonNull QuickViewHolder holder, int position, @Nullable ${provider.pageName.value}Entity item) {
-//   new GlideImageLoaderStrategy().loadImage(getContext(),
-//                    ImageConfigImpl.builder()
-//                            .placeholder(R.mipmap.ic_launcher_round) //占位照片 头像icon_user_avatar  占位icon_app_null
-//                            .imageRadius(8)  //图片圆角 isCircle(true) 圆图
-//                            .url(item.getImage()) // 图片地址
-//                            .imageView(holder.getView(R.id.iv_parking_mobile_item_img)).build());
+//        ArmsUtils.obtainAppComponentFromContext(getContext())
+//                        .imageLoader()
+//                        .loadImage(getContext(), ImageConfigImpl
+//                                .builder()
+//                                .placeholder(R.mipmap.ic_launcher_round) //占位照片 头像icon_user_avatar  占位icon_app_null
+//                                .fallback(R.mipmap.ic_launcher_round) //异常照片
+//                                .imageRadius(8)  //图片圆角 isCircle(true) 圆图
+//                                .url(Api.DEBUG_IMG) // 图片地址
+//                                .imageView(helper.getView(R.id.iv_shop_wy_recommend)).build());
     }
 }   
 """
