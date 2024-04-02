@@ -14,14 +14,17 @@ import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import ${provider.appPackageName.value}.R 
 import  ${provider.entityPackageName.value}.${provider.pageName.value}Entity;
-class ${provider.pageName.value}Adapter() :
+class ${provider.pageName.value}Adapter(var type: Int = 0) :
     BaseQuickAdapter<${provider.pageName.value}Entity, QuickViewHolder>() {
     override fun onCreateViewHolder(
         context: Context,
         parent: ViewGroup,
         viewType: Int
     ): QuickViewHolder {
-        return QuickViewHolder(R.layout.${provider.adapterLayoutName.value}, parent)
+        val layoutResId = when (type) {
+            else -> R.layout.${provider.adapterLayoutName.value}
+        }
+        return QuickViewHolder(layoutResId, parent)
     }
 
     override fun onBindViewHolder(holder: QuickViewHolder, position: Int, item: ${provider.pageName.value}Entity?) {
