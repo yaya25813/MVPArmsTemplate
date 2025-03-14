@@ -23,12 +23,8 @@ import com.mstytech.yzapp.view.dialog.LoadingDialog
 
 ${commonAnnotation(provider)}
 
-@RouterAnno(
-    host = ModuleConfig.BaseHOST,
-    path = ModuleConfig.App.${provider.pageName.value},
-    interceptorNames = [ModuleConfig.USER_LOGIN],
-    desc = ""
-)
+
+@Destination(route = ModuleConfig.App.${provider.pageName.value.toUpperCase()})
 
 class ${provider.pageName.value}Activity : BaseActivity<${provider.pageName.value}Presenter, Activity${provider.pageName.value}Binding>() , ${provider.pageName.value}Contract.View, View.OnClickListener {
     override fun setupActivityComponent(appComponent: AppComponent) {
@@ -51,10 +47,15 @@ class ${provider.pageName.value}Activity : BaseActivity<${provider.pageName.valu
     }
     
     private fun initListener() {
-    
+//        onForClickListener(this, )
     }
     
-    override fun onClick(view: View) {}
+    override fun onClick(view: View) {
+      when (view) {
+//            binding?. -> {
+//            }
+        }
+    }
     
     override fun getActivity(): Activity = this
     
@@ -108,12 +109,7 @@ import ${provider.presenterPackageName.value}.${provider.pageName.value}Presente
 import ${provider.appPackageName.value}.R;
 
 ${commonAnnotation(provider)}
-
-@RouterAnno(
-        host = ModuleConfig.BaseHOST,
-        path = ModuleConfig.App.${provider.pageName.value},
-        desc = ""
-)
+@Destination(route = ModuleConfig.App.${provider.pageName.value})
 public class ${provider.pageName.value}Activity extends BaseActivity<${provider.pageName.value}Presenter, Activity${provider.pageName.value}Binding> implements ${provider.pageName.value}Contract.View, View.OnClickListener{
  
     @Override
