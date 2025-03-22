@@ -18,8 +18,7 @@ import ${provider.componentPackageName.value}.Dagger${provider.pageName.value}Co
 import ${provider.moudlePackageName.value}.${provider.pageName.value}Module
 import ${provider.contractPackageName.value}.${provider.pageName.value}Contract
 import ${provider.presenterPackageName.value}.${provider.pageName.value}Presenter
-
-import com.mstytech.yzapp.view.dialog.LoadingDialog
+import ${provider.appPackageName.value}.view.dialog.LoadingDialog
 
 ${commonAnnotation(provider)}
 class ${provider.pageName.value}Fragment : BaseFragment<${provider.pageName.value}Presenter, Fragment${provider.pageName.value}Binding>() , ${provider.pageName.value}Contract.View{

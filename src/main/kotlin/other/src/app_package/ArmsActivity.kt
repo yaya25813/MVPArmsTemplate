@@ -3,7 +3,8 @@ package other.src.app_package
 import other.ArmsPluginTemplateProviderImpl
 import other.commonAnnotation
 
-fun armsActivity(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) = if (isKt) armsActivityKt(provider) else armsActivityJava(provider)
+fun armsActivity(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) =
+    if (isKt) armsActivityKt(provider) else armsActivityJava(provider)
 
 private fun armsActivityKt(provider: ArmsPluginTemplateProviderImpl) = """
 package ${provider.activityPackageName.value}
@@ -18,9 +19,9 @@ import ${provider.componentPackageName.value}.Dagger${provider.pageName.value}Co
 import ${provider.moudlePackageName.value}.${provider.pageName.value}Module
 import ${provider.contractPackageName.value}.${provider.pageName.value}Contract
 import ${provider.presenterPackageName.value}.${provider.pageName.value}Presenter
-import com.mstytech.yzapp.databinding.Activity${provider.pageName.value}Binding
-import com.mstytech.yzapp.view.dialog.LoadingDialog
-
+import ${provider.appPackageName.value}.view.dialog.LoadingDialog
+import ${provider.appPackageName.value}.databinding.Activity${provider.pageName.value}Binding
+ 
 ${commonAnnotation(provider)}
 
 
@@ -31,7 +32,12 @@ class ${provider.pageName.value}Activity : BaseActivity<${provider.pageName.valu
         Dagger${provider.pageName.value}Component //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
-                .${provider.pageName.value[0].lowercaseChar()}${provider.pageName.value.substring(1, provider.pageName.value.length)}Module(${provider.pageName.value}Module(this))
+                .${provider.pageName.value[0].lowercaseChar()}${
+    provider.pageName.value.substring(
+        1,
+        provider.pageName.value.length
+    )
+}Module(${provider.pageName.value}Module(this))
                 .build()
                 .inject(this)
     }
