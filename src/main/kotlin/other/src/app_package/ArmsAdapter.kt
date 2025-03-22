@@ -1,10 +1,9 @@
 package other.src.app_package
 
 import other.ArmsPluginTemplateProviderImpl
-import other.armsAnnotation
-import other.commonAnnotation
 
-fun armsAdapter(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) = if (isKt) armsAdapterKt(provider) else armsAdapterJava(provider)
+fun armsAdapter(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) =
+    if (isKt) armsAdapterKt(provider) else armsAdapterJava(provider)
 
 private fun armsAdapterKt(provider: ArmsPluginTemplateProviderImpl) = """
 package ${provider.adapterPackageName.value}

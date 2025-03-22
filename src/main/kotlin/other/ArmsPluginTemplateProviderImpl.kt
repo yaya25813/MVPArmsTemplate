@@ -24,36 +24,41 @@ class ArmsPluginTemplateProviderImpl : WizardTemplateProvider() {
             //minBuildApi = MIN_API
             category = Category.Activity
             formFactor = FormFactor.Mobile
-            screens = listOf(WizardUiContext.ActivityGallery, WizardUiContext.MenuEntry, WizardUiContext.NewProject, WizardUiContext.NewModule)
+            screens = listOf(
+                WizardUiContext.ActivityGallery,
+                WizardUiContext.MenuEntry,
+                WizardUiContext.NewProject,
+                WizardUiContext.NewModule
+            )
             thumb { File("template_blank_activity.png") }
 
             widgets(
-                    TextFieldWidget(pageName),
-                    PackageNameWidget(appPackageName),
-                    CheckBoxWidget(needActivity),
-                    TextFieldWidget(activityLayoutName),
-                    CheckBoxWidget(generateActivityLayout),
-                    TextFieldWidget(activityPackageName),
-                    CheckBoxWidget(needFragment),
-                    TextFieldWidget(fragmentLayoutName),
-                    CheckBoxWidget(generateFragmentLayout),
-                    TextFieldWidget(fragmentPackageName),
-                    CheckBoxWidget(needEntity),
-                    TextFieldWidget(entityPackageName),
-                    CheckBoxWidget(needAdapter),
-                    TextFieldWidget(adapterLayoutName),
-                    CheckBoxWidget(generateAdapterLayout),
-                    TextFieldWidget(adapterPackageName),
-                    CheckBoxWidget(needContract),
-                    TextFieldWidget(contractPackageName),
-                    CheckBoxWidget(needPresenter),
-                    TextFieldWidget(presenterPackageName),
-                    CheckBoxWidget(needModel),
-                    TextFieldWidget(modelPackageName),
-                    CheckBoxWidget(needDagger),
-                    TextFieldWidget(componentPackageName),
-                    TextFieldWidget(moudlePackageName),
-                    LanguageWidget()
+                TextFieldWidget(pageName),
+                PackageNameWidget(appPackageName),
+                CheckBoxWidget(needActivity),
+                TextFieldWidget(activityLayoutName),
+                CheckBoxWidget(generateActivityLayout),
+                TextFieldWidget(activityPackageName),
+                CheckBoxWidget(needFragment),
+                TextFieldWidget(fragmentLayoutName),
+                CheckBoxWidget(generateFragmentLayout),
+                TextFieldWidget(fragmentPackageName),
+                CheckBoxWidget(needEntity),
+                TextFieldWidget(entityPackageName),
+                CheckBoxWidget(needAdapter),
+                TextFieldWidget(adapterLayoutName),
+                CheckBoxWidget(generateAdapterLayout),
+                TextFieldWidget(adapterPackageName),
+                CheckBoxWidget(needContract),
+                TextFieldWidget(contractPackageName),
+                CheckBoxWidget(needPresenter),
+                TextFieldWidget(presenterPackageName),
+                CheckBoxWidget(needModel),
+                TextFieldWidget(modelPackageName),
+                CheckBoxWidget(needDagger),
+                TextFieldWidget(componentPackageName),
+                TextFieldWidget(moudlePackageName),
+                LanguageWidget()
             )
 
             //创建所需文件
@@ -94,7 +99,8 @@ class ArmsPluginTemplateProviderImpl : WizardTemplateProvider() {
         suggest = { activityToLayout(pageName.value) }
         default = "activity_main"
         visible = { needActivity.value }
-        help = "Activity 创建之前需要填写 Activity 的布局名,若布局已创建就直接填写此布局名,若还没创建此布局,请勾选下面的单选框"
+        help =
+            "Activity 创建之前需要填写 Activity 的布局名,若布局已创建就直接填写此布局名,若还没创建此布局,请勾选下面的单选框"
     }
 
     /** 是否需要 layout xml 文件 */
@@ -129,7 +135,8 @@ class ArmsPluginTemplateProviderImpl : WizardTemplateProvider() {
         suggest = { "fragment_${classToResource(pageName.value)}" }
         default = "fragment_main"
         visible = { needFragment.value }
-        help = "Fragment 创建之前需要填写 Fragment 的布局名,若布局已创建就直接填写此布局名,若还没创建此布局,请勾选下面的单选框"
+        help =
+            "Fragment 创建之前需要填写 Fragment 的布局名,若布局已创建就直接填写此布局名,若还没创建此布局,请勾选下面的单选框"
     }
 
     /** 是否需要生成 Fragment layout 文件 */
@@ -225,7 +232,8 @@ class ArmsPluginTemplateProviderImpl : WizardTemplateProvider() {
         suggest = { "adapter_${classToResource(pageName.value)}" }
         default = "adapter_main"
         visible = { needAdapter.value }
-        help = "Adapter 创建之前需要填写 Adapter 的布局名,若布局已创建就直接填写此布局名,若还没创建此布局,请勾选下面的单选框"
+        help =
+            "Adapter 创建之前需要填写 Adapter 的布局名,若布局已创建就直接填写此布局名,若还没创建此布局,请勾选下面的单选框"
     }
 
     /** 是否需要生成 Adapter layout 文件 */
@@ -259,4 +267,5 @@ class ArmsPluginTemplateProviderImpl : WizardTemplateProvider() {
         visible = { needDagger.value }
         help = "Moudle 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"
     }
+
 }

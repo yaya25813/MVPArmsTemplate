@@ -3,7 +3,8 @@ package other.src.app_package
 import other.ArmsPluginTemplateProviderImpl
 import other.armsAnnotation
 
-fun armsComponent(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) = if (isKt) armsComponentKt(provider) else armsComponentJava(provider)
+fun armsComponent(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) =
+    if (isKt) armsComponentKt(provider) else armsComponentJava(provider)
 
 private fun armsComponentKt(provider: ArmsPluginTemplateProviderImpl) = """
 package ${provider.componentPackageName.value}
@@ -42,7 +43,7 @@ ${
         "@FragmentScope"
     else ""
 }
-@Component(modules = arrayOf(${provider.pageName.value}Module::class),dependencies = arrayOf(AppComponent::class))
+@Component(modules = [${provider.pageName.value}Module::class], dependencies = [AppComponent::class])
 interface ${provider.pageName.value}Component {
 ${
     if (provider.needActivity.value && provider.needFragment.value) {

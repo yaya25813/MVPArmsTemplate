@@ -3,7 +3,8 @@ package other.src.app_package
 import other.ArmsPluginTemplateProviderImpl
 import other.commonAnnotation
 
-fun armsFragment(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) = if (isKt) armsFragmentKt(provider) else armsFragmentJava(provider)
+fun armsFragment(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) =
+    if (isKt) armsFragmentKt(provider) else armsFragmentJava(provider)
 
 private fun armsFragmentKt(provider: ArmsPluginTemplateProviderImpl) = """
 package ${provider.fragmentPackageName.value}
@@ -39,7 +40,12 @@ class ${provider.pageName.value}Fragment : BaseFragment<${provider.pageName.valu
         Dagger${provider.pageName.value}Component //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
-                .${provider.pageName.value[0].lowercaseChar()}${provider.pageName.value.substring(1,provider.pageName.value.length)}Module(${provider.pageName.value}Module(this))
+                .${provider.pageName.value[0].lowercaseChar()}${
+    provider.pageName.value.substring(
+        1,
+        provider.pageName.value.length
+    )
+}Module(${provider.pageName.value}Module(this))
                 .build()
                 .inject(this)
     }

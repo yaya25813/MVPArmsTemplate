@@ -3,7 +3,8 @@ package other.src.app_package
 import other.ArmsPluginTemplateProviderImpl
 import other.armsAnnotation
 
-fun armsModel(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) = if (isKt) armsModelKt(provider) else armsModelJava(provider)
+fun armsModel(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) =
+    if (isKt) armsModelKt(provider) else armsModelJava(provider)
 
 private fun armsModelKt(provider: ArmsPluginTemplateProviderImpl) = """
 package ${provider.modelPackageName.value}

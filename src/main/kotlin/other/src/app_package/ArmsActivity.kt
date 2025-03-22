@@ -2,6 +2,7 @@ package other.src.app_package
 
 import other.ArmsPluginTemplateProviderImpl
 import other.commonAnnotation
+import java.util.*
 
 fun armsActivity(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) =
     if (isKt) armsActivityKt(provider) else armsActivityJava(provider)
@@ -21,12 +22,11 @@ import ${provider.contractPackageName.value}.${provider.pageName.value}Contract
 import ${provider.presenterPackageName.value}.${provider.pageName.value}Presenter
 import ${provider.appPackageName.value}.view.dialog.LoadingDialog
 import ${provider.appPackageName.value}.databinding.Activity${provider.pageName.value}Binding
- 
+import ${provider.appPackageName.value}.mvp.ui.ModuleConfig
+import zlc.season.butterfly.annotation.Destination
+
 ${commonAnnotation(provider)}
-
-
-@Destination(route = ModuleConfig.App.${provider.pageName.value.toUpperCase()})
-
+@Destination(route = ModuleConfig.App.${provider.pageName.value.uppercase(Locale.getDefault())})
 class ${provider.pageName.value}Activity : BaseActivity<${provider.pageName.value}Presenter, Activity${provider.pageName.value}Binding>() , ${provider.pageName.value}Contract.View, View.OnClickListener {
     override fun setupActivityComponent(appComponent: AppComponent) {
         Dagger${provider.pageName.value}Component //如找不到该类,请编译一下项目

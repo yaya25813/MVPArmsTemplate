@@ -1,11 +1,9 @@
 package other.src.app_package
 
 import other.ArmsPluginTemplateProviderImpl
-import other.armsAnnotation
 
-fun armsEntity(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) = if (isKt) armsEntityKt(provider) else armsEntityJava(provider)
-
-
+fun armsEntity(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) =
+    if (isKt) armsEntityKt(provider) else armsEntityJava(provider)
 
 
 fun armsEntityKt(provider: ArmsPluginTemplateProviderImpl) = """

@@ -3,7 +3,8 @@ package other.src.app_package
 import other.ArmsPluginTemplateProviderImpl
 import other.armsAnnotation
 
-fun armsModule(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) = if (isKt) armsModuleKt(provider) else armsModuleJava(provider)
+fun armsModule(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) =
+    if (isKt) armsModuleKt(provider) else armsModuleJava(provider)
 
 private fun armsModuleKt(provider: ArmsPluginTemplateProviderImpl): String {
     val scope = if (provider.needActivity.value && provider.needFragment.value)
