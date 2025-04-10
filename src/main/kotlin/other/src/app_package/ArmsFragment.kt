@@ -77,14 +77,6 @@ class ${provider.pageName.value}Fragment : BaseFragment<${provider.pageName.valu
         return Fragment${provider.pageName.value}Binding.inflate(inflater, container, false)
     }
     
-    override fun showLoading() {
-        LoadingDialog.getInstance(context).show()
-    }
-
-    override fun hideLoading() {
-        LoadingDialog.dialogDismiss()
-    }
-
     override fun onPause() {
         super.onPause()
         hideLoading()
@@ -96,7 +88,9 @@ class ${provider.pageName.value}Fragment : BaseFragment<${provider.pageName.valu
     }
 
     override fun showMessage(message: String) {
-        ArmsUtils.snackbarText(message)
+        if(DataTool.isNotEmpty(message)){
+            ArmsUtils.snackbarText(message)
+        }
     }
 
 }

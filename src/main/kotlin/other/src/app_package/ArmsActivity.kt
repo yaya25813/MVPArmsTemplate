@@ -65,16 +65,6 @@ class ${provider.pageName.value}Activity : BaseActivity<${provider.pageName.valu
     
     override fun getActivity(): Activity = this
     
-    override fun showLoading() {
-        if (ActivityUtils.isActivityAlive(this)) {
-            LoadingDialog.getInstance(this).show()
-        }
-    }
-
-    override fun hideLoading() {
-        LoadingDialog.dialogDismiss()
-    }
-
     override fun onPause() {
         super.onPause()
         hideLoading()
@@ -85,7 +75,9 @@ class ${provider.pageName.value}Activity : BaseActivity<${provider.pageName.valu
     }
     
     override fun showMessage(message: String) {
-        ArmsUtils.snackbarText(message)
+        if(DataTool.isNotEmpty(message)){
+            ArmsUtils.snackbarText(message)
+        }
     }
 
     override fun killMyself() {
