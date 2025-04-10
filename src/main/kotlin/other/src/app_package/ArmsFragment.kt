@@ -15,11 +15,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.jess.arms.base.BaseFragment
 import com.jess.arms.di.component.AppComponent
+import ${provider.appPackageName.value}.databinding.Fragment${provider.pageName.value}Binding;
 import ${provider.componentPackageName.value}.Dagger${provider.pageName.value}Component
 import ${provider.moudlePackageName.value}.${provider.pageName.value}Module
 import ${provider.contractPackageName.value}.${provider.pageName.value}Contract
 import ${provider.presenterPackageName.value}.${provider.pageName.value}Presenter
-import ${provider.appPackageName.value}.view.dialog.LoadingDialog
 
 ${commonAnnotation(provider)}
 class ${provider.pageName.value}Fragment : BaseFragment<${provider.pageName.value}Presenter, Fragment${provider.pageName.value}Binding>() , ${provider.pageName.value}Contract.View{
@@ -88,7 +88,7 @@ class ${provider.pageName.value}Fragment : BaseFragment<${provider.pageName.valu
     }
 
     override fun showMessage(message: String) {
-        if(DataTool.isNotEmpty(message)){
+        if (DataTool.isNotEmpty(message)) {
             ArmsUtils.snackbarText(message)
         }
     }
@@ -110,7 +110,6 @@ import android.view.ViewGroup;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-import ${provider.appPackageName.value}.view.dialog.LoadingDialog;
 import ${provider.componentPackageName.value}.Dagger${provider.pageName.value}Component;
 import ${provider.contractPackageName.value}.${provider.pageName.value}Contract;
 import ${provider.presenterPackageName.value}.${provider.pageName.value}Presenter;
@@ -206,17 +205,6 @@ public class ${provider.pageName.value}Fragment extends BaseFragment<${provider.
     @Override
     protected Fragment${provider.pageName.value}Binding createBinding(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
         return Fragment${provider.pageName.value}Binding.inflate(inflater, container, false);
-    }
-    
-    
-    @Override
-    public void showLoading() {
-        LoadingDialog.getInstance(getContext()).show();
-    }
-
-    @Override
-    public void hideLoading() {
-        LoadingDialog.dialogDismiss();
     }
     
     @Override

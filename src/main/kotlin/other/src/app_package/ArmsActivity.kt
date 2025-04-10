@@ -20,7 +20,6 @@ import ${provider.componentPackageName.value}.Dagger${provider.pageName.value}Co
 import ${provider.moudlePackageName.value}.${provider.pageName.value}Module
 import ${provider.contractPackageName.value}.${provider.pageName.value}Contract
 import ${provider.presenterPackageName.value}.${provider.pageName.value}Presenter
-import ${provider.appPackageName.value}.view.dialog.LoadingDialog
 import ${provider.appPackageName.value}.databinding.Activity${provider.pageName.value}Binding
 import ${provider.appPackageName.value}.mvp.ui.ModuleConfig
 import zlc.season.butterfly.annotation.Destination
@@ -75,7 +74,7 @@ class ${provider.pageName.value}Activity : BaseActivity<${provider.pageName.valu
     }
     
     override fun showMessage(message: String) {
-        if(DataTool.isNotEmpty(message)){
+        if (DataTool.isNotEmpty(message)) {
             ArmsUtils.snackbarText(message)
         }
     }
@@ -98,7 +97,6 @@ import com.jess.arms.base.BaseActivity;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.utils.ArmsUtils;
 import android.content.Intent;
-import ${provider.appPackageName.value}.view.dialog.LoadingDialog;
 import ${provider.appPackageName.value}.databinding.Activity${provider.pageName.value}Binding;
 import ${provider.componentPackageName.value}.Dagger${provider.pageName.value}Component;
 import ${provider.moudlePackageName.value}.${provider.pageName.value}Module;
@@ -149,18 +147,6 @@ public class ${provider.pageName.value}Activity extends BaseActivity<${provider.
     @Override
     protected Activity${provider.pageName.value}Binding createBinding() {
         return Activity${provider.pageName.value}Binding.inflate(LayoutInflater.from(this));
-    }
-    
-    @Override
-    public void showLoading() {
-         if (ActivityUtils.isActivityAlive(this)) {
-            LoadingDialog.getInstance(this).show();
-        }
-    }
-
-    @Override
-    public void hideLoading() {
-        LoadingDialog.dialogDismiss();
     }
     
     @Override
